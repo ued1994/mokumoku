@@ -21,7 +21,7 @@
             </div>
             <div class="mb-3">
               <%= f.label :gender %>
-              <%= f.select :gender, ['男性', '女性'] %>
+              <%= f.select :gender, User.genders.keys.map { |g| [g.capitalize, g] } %>
             </div>
             <div class="mb-3">
               <%= f.label :email %>
