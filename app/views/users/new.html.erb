@@ -21,7 +21,7 @@
             </div>
             <div class="mb-3">
               <%= f.label :gender %>
-              <%= f.select :gender, User.genders.keys.map { |g| [g.capitalize, g] } %>
+              <%= f.select :gender, User.genders.keys.map { |gender| [User.human_enum_name(:gender, gender), gender]  } %>
             </div>
             <div class="mb-3">
               <%= f.label :email %>
