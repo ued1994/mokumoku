@@ -33,7 +33,6 @@ class EventsController < ApplicationController
       User.all.find_each do |user|
         NotificationFacade.created_event(@event, user)
       end
-
       redirect_to event_path(@event)
     else
       render :new
@@ -60,6 +59,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :content, :held_at, :prefecture_id, :thumbnail)
+    params.require(:event).permit(:title, :content, :held_at, :prefecture_id, :thumbnail, :only_woman)
   end
 end
