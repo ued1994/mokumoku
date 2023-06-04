@@ -19,6 +19,13 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   validates :email, uniqueness: true
+  validates :gender, presence: true
+
+  enum gender: { other: 0, man: 1, woman: 2 }
+
+  def self.human_enum_name(enum_name, value)
+    I18n.t("enums.#{model_name.i18n_key}.#{enum_name}.#{value}")
+  end
 
   scope :allowing_created_event_notification,
         -> { joins(:notification_timings).merge(NotificationTiming.created_event) }

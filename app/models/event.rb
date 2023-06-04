@@ -11,6 +11,7 @@ class Event < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_one_attached :thumbnail
 
+
   scope :future, -> { where('held_at > ?', Time.current) }
   scope :past, -> { where('held_at <= ?', Time.current) }
 
